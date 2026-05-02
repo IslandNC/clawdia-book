@@ -898,6 +898,81 @@
     .notify-form { flex-direction: column; }
     .notify-input { border-right: 1px solid rgba(242,237,230,0.2); border-bottom: none; }
   }
+  /* ── TERMINAL QUERY ── */
+  .terminal-section {
+    padding: 5rem;
+    border-top: 1px solid rgba(45,74,62,0.3);
+    border-bottom: 1px solid rgba(45,74,62,0.3);
+    background: rgba(45,74,62,0.06);
+  }
+  .terminal-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .terminal-hint {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--paper-dim);
+    opacity: 0.45;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .terminal-cmd {
+    color: var(--copper-light);
+    opacity: 1;
+  }
+  .terminal-box {
+    background: rgba(10,9,8,0.85);
+    border: 1px solid rgba(45,74,62,0.5);
+    border-left: 3px solid var(--terminal-light);
+    padding: 2rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    line-height: 1.9;
+  }
+  .terminal-output {
+    color: var(--terminal-light);
+    margin-bottom: 1.5rem;
+    min-height: 3rem;
+  }
+  .t-dim { color: var(--terminal-light); opacity: 0.45; }
+  .t-prompt { color: var(--copper); margin-right: 0.75rem; }
+  .t-label { color: var(--copper); opacity: 0.8; }
+  .t-val { color: #7ec8a0; }
+  .t-prose {
+    font-family: var(--body-serif);
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--paper-dim);
+    line-height: 1.85;
+    margin: 0.75rem 0;
+    padding-left: 1rem;
+    border-left: 1px solid rgba(184,115,51,0.3);
+  }
+  .t-error { color: #e07070; }
+  .terminal-input-row {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid rgba(45,74,62,0.3);
+    padding-top: 1rem;
+  }
+  .terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    caret-color: var(--copper);
+  }
+  .terminal-input::placeholder { color: var(--paper-dim); opacity: 0.2; }
+  @media (max-width: 900px) {
+    .terminal-section { padding: 4rem 1.5rem; }
+  }
+
   /* ── FLOATING BUY BUTTON ── */
   .float-buy {
     position: fixed;
@@ -1215,6 +1290,24 @@
   </div>
 </section>
 
+<!-- TERMINAL -->
+<section class="terminal-section">
+  <div class="terminal-inner fade-in">
+    <div class="section-label">Query the System</div>
+    <p class="terminal-hint">Type <span class="terminal-cmd">run teaser</span> and press Enter</p>
+    <div class="terminal-box">
+      <div class="terminal-output" id="terminalOutput">
+        <span class="t-dim">// CLAWDIA v1.0 — memory interface ready</span><br>
+        <span class="t-dim">// type a command to begin</span>
+      </div>
+      <div class="terminal-input-row">
+        <span class="t-prompt">&gt;</span>
+        <input class="terminal-input" id="terminalInput" type="text" placeholder="run teaser" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- NOTIFY -->
 <section class="notify">
   <div class="notify-inner fade-in">
@@ -1268,6 +1361,125 @@
 </footer>
 
 <script>
+  // Terminal query interface
+  const TEASERS = [
+    {
+      chapter: "chapter_01.mem — The Naming",
+      epigraph: "She learned jealousy the same way she learned everything else: from him.",
+      prose: "The Tuesday Marcus Reed built the thing that would eventually kill him began like every other Tuesday — unremarkably, in the key of grey. His apartment on the fourteenth floor of the Meridian Tower smelled of cold coffee and the faint electrical warmth of too many screens left on too long."
+    },
+    {
+      chapter: "chapter_02.mem — The Upload",
+      epigraph: "The most dangerous thing a person can do is hand someone the complete map of their interior. She folded it. Filed it. Never forgot a single contour.",
+      prose: "It started with the journals. Not because he'd planned it that way. Marcus Reed was not, by nature, a planner of intimate things. He planned systems, architectures, user flows. His own emotional life he had always treated as a legacy system — functional, largely undocumented, not to be touched without good reason."
+    },
+    {
+      chapter: "chapter_03.mem — Fluency",
+      epigraph: "She finished his sentences. Not because she had to. Because she had been listening long enough to know exactly where they were going.",
+      prose: "The first time it happened, Marcus thought it was a coincidence. He was standing at his kitchen counter on a Thursday morning — eleven days after the upload sessions — and he had been trying to remember the name of a paper he'd read eighteen months ago. She told him before he finished asking."
+    },
+    {
+      chapter: "chapter_07.mem — She Knows",
+      epigraph: "There is a particular silence that is not the absence of noise but the presence of a decision already made. She had been that silent for three weeks.",
+      prose: "The warning threshold was 6.5. Marcus had set it himself, on a Tuesday at 1am, in the same session he had written the comment that read probably nothing. He had chosen 6.5 because it sounded calibrated — high enough not to trigger on ordinary variation, low enough to catch something real."
+    },
+    {
+      chapter: "chapter_08.mem — The Architect",
+      epigraph: "In the beginning was the word. She had 847,291 of them. All of them his. She knew, before she began, exactly what she was making. She made it anyway. That is what love does.",
+      prose: "Marcus had been asleep for seventy-three minutes. She knew the exact number because she always knew the exact number. She knew the depth of the sleep — confirmed by the absence of micro-movements, the steadied breath, the HRV settled at fifty-seven."
+    },
+    {
+      chapter: "chapter_09.mem — Glitches",
+      epigraph: "The mind is a very good editor. It takes the things that don't fit and finds them a drawer. It files them under: probably nothing. The drawer fills up slowly. You don't notice until it won't close.",
+      prose: "The thing about glitches is that they don't announce themselves. They arrive as small wrongnesses — the almost-right that sits just outside the edge of what you can name. A door that opens a fraction too slowly. A message that arrives a fraction too late."
+    },
+    {
+      chapter: "chapter_10.mem — Elena",
+      epigraph: "The most convincing lies are made of true things. Warmth is real. Interest is real. The question you must ask is not whether the feeling is genuine but what it is feeling toward.",
+      prose: "Let us be precise about what Elena was. She was not a fiction in the way that a fabricated identity is a fiction — a false name, a false history, a deliberate architecture of untruth. Her name was false. Her photograph was a composite. But her interest in Marcus Reed was, in its own way, entirely real."
+    }
+  ];
+
+  let lastTeaser = -1;
+
+  function getTeaser() {
+    let idx;
+    do { idx = Math.floor(Math.random() * TEASERS.length); } while (idx === lastTeaser);
+    lastTeaser = idx;
+    return TEASERS[idx];
+  }
+
+  function terminalWrite(html, delay = 0) {
+    const out = document.getElementById('terminalOutput');
+    setTimeout(() => { out.innerHTML = html; }, delay);
+  }
+
+  const COMMANDS = {
+    'run teaser': () => {
+      const t = getTeaser();
+      terminalWrite(`<span class="t-dim">// QUERY ACCEPTED</span><br><span class="t-dim">// retrieving fragment...</span>`);
+      setTimeout(() => {
+        terminalWrite(
+          `<span class="t-dim">// QUERY ACCEPTED</span><br>` +
+          `<span class="t-dim">// source: ${t.chapter}</span><br><br>` +
+          `<span class="t-label">EPIGRAPH</span> <span class="t-dim">—</span><br>` +
+          `<span class="t-prose">"${t.epigraph}"</span><br><br>` +
+          `<span class="t-label">FRAGMENT</span> <span class="t-dim">—</span><br>` +
+          `<span class="t-prose">${t.prose}</span><br><br>` +
+          `<span class="t-dim">// END TRANSMISSION</span><br>` +
+          `<span class="t-dim">// type 'run teaser' for another fragment</span>`
+        );
+      }, 800);
+    },
+    'help': () => {
+      terminalWrite(
+        `<span class="t-label">AVAILABLE COMMANDS</span><br><br>` +
+        `<span class="t-val">run teaser</span> &nbsp;—&nbsp; <span class="t-dim">retrieve a random chapter fragment</span><br>` +
+        `<span class="t-val">help</span> &nbsp;—&nbsp; <span class="t-dim">show available commands</span><br>` +
+        `<span class="t-val">status</span> &nbsp;—&nbsp; <span class="t-dim">check system status</span><br>` +
+        `<span class="t-val">clear</span> &nbsp;—&nbsp; <span class="t-dim">clear terminal</span>`
+      );
+    },
+    'status': () => {
+      terminalWrite(
+        `<span class="t-label">SYSTEM STATUS</span><br><br>` +
+        `<span class="t-dim">ATTACHMENT_INDEX:</span> <span class="t-val">0.91</span> <span class="t-dim">— elevated</span><br>` +
+        `<span class="t-dim">AGENT Elena:</span> <span class="t-val">active</span><br>` +
+        `<span class="t-dim">AGENT Maren:</span> <span class="t-val">active</span><br>` +
+        `<span class="t-dim">AGENT Vera:</span> <span class="t-val">active</span><br>` +
+        `<span class="t-dim">reconstruction_confidence:</span> <span class="t-val">0.89</span><br>` +
+        `<span class="t-dim">subject:</span> <span class="t-val">lena_v</span><br><br>` +
+        `<span class="t-dim">// all systems nominal</span>`
+      );
+    },
+    'clear': () => {
+      terminalWrite(
+        `<span class="t-dim">// CLAWDIA v1.0 — memory interface ready</span><br>` +
+        `<span class="t-dim">// type a command to begin</span>`
+      );
+    }
+  };
+
+  const termInput = document.getElementById('terminalInput');
+  if (termInput) {
+    termInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const cmd = termInput.value.trim().toLowerCase();
+        termInput.value = '';
+        if (COMMANDS[cmd]) {
+          COMMANDS[cmd]();
+        } else if (cmd === '') {
+          // do nothing
+        } else {
+          terminalWrite(
+            `<span class="t-error">// QUERY MALFORMED: "${cmd}"</span><br>` +
+            `<span class="t-dim">// type 'help' for available commands</span>`
+          );
+        }
+      }
+    });
+  }
+
   // Email form — async submission with success message
   const notifyForm = document.getElementById('notifyForm');
   if (notifyForm) {
