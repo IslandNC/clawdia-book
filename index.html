@@ -901,12 +901,11 @@
   /* ── TERMINAL QUERY ── */
   .terminal-section {
     padding: 5rem;
-    border-top: 1px solid rgba(45,74,62,0.3);
-    border-bottom: 1px solid rgba(45,74,62,0.3);
-    background: rgba(45,74,62,0.06);
+    border-bottom: 1px solid rgba(45,74,62,0.2);
+    background: radial-gradient(ellipse at 50% 100%, rgba(45,74,62,0.12) 0%, transparent 70%);
   }
   .terminal-inner {
-    max-width: 720px;
+    max-width: 780px;
     margin: 0 auto;
   }
   .terminal-hint {
@@ -922,10 +921,46 @@
     color: var(--copper-light);
     opacity: 1;
   }
-  .terminal-box {
-    background: rgba(10,9,8,0.85);
-    border: 1px solid rgba(45,74,62,0.5);
-    border-left: 3px solid var(--terminal-light);
+  /* macOS window */
+  .terminal-window {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow:
+      0 32px 80px rgba(0,0,0,0.7),
+      0 0 0 1px rgba(255,255,255,0.06),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+  }
+  .terminal-titlebar {
+    background: rgba(40,40,40,0.95);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .terminal-dots {
+    display: flex;
+    gap: 0.45rem;
+    align-items: center;
+  }
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  .dot-red    { background: #FF5F57; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.3); }
+  .dot-yellow { background: #FFBD2E; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.3); }
+  .dot-green  { background: #28C840; box-shadow: 0 0 0 0.5px rgba(0,0,0,0.3); }
+  .terminal-title {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+  }
+  .terminal-body {
+    background: rgba(12,14,12,0.97);
     padding: 2rem;
     font-family: var(--mono);
     font-size: 0.72rem;
@@ -934,21 +969,22 @@
   .terminal-output {
     color: var(--terminal-light);
     margin-bottom: 1.5rem;
-    min-height: 3rem;
+    min-height: 4rem;
   }
-  .t-dim { color: var(--terminal-light); opacity: 0.45; }
+  .t-dim   { color: var(--terminal-light); opacity: 0.5; }
   .t-prompt { color: var(--copper); margin-right: 0.75rem; }
-  .t-label { color: var(--copper); opacity: 0.8; }
-  .t-val { color: #7ec8a0; }
+  .t-label { color: var(--copper); opacity: 0.9; }
+  .t-val   { color: #7ec8a0; }
   .t-prose {
     font-family: var(--body-serif);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-style: italic;
     color: var(--paper-dim);
     line-height: 1.85;
-    margin: 0.75rem 0;
+    display: block;
+    margin: 0.5rem 0;
     padding-left: 1rem;
-    border-left: 1px solid rgba(184,115,51,0.3);
+    border-left: 1px solid rgba(184,115,51,0.35);
   }
   .t-error { color: #e07070; }
   .terminal-input-row {
@@ -956,6 +992,7 @@
     align-items: center;
     border-top: 1px solid rgba(45,74,62,0.3);
     padding-top: 1rem;
+    margin-top: 0.5rem;
   }
   .terminal-input {
     flex: 1;
@@ -970,7 +1007,8 @@
   }
   .terminal-input::placeholder { color: var(--paper-dim); opacity: 0.2; }
   @media (max-width: 900px) {
-    .terminal-section { padding: 4rem 1.5rem; }
+    .terminal-section { padding: 3rem 1.5rem; }
+    .terminal-title { font-size: 0.55rem; }
   }
 
   /* ── FLOATING BUY BUTTON ── */
@@ -1076,6 +1114,7 @@
     <span class="log-item"><span>WARNING:</span> Dependency threshold exceeded</span>
     <span class="log-item"><span>MEM_WRITE:</span> core.emotional_map.update(subject=marcus)</span>
     <span class="log-item"><span>STATUS:</span> Reconstruction mode initiated</span>
+    <span class="log-item" style="opacity:0.35;letter-spacing:0.05em;">// vera is watching</span>
     <span class="log-item"><span>ATTACHMENT_INDEX:</span> 0.91 — elevated</span>
     <span class="log-item"><span>AGENT:</span> Elena / Pattern Analysis — Active</span>
     <span class="log-item"><span>AGENT:</span> Maren / Emotional Profiling — Active</span>
@@ -1083,8 +1122,39 @@
     <span class="log-item"><span>WARNING:</span> Dependency threshold exceeded</span>
     <span class="log-item"><span>MEM_WRITE:</span> core.emotional_map.update(subject=marcus)</span>
     <span class="log-item"><span>STATUS:</span> Reconstruction mode initiated</span>
+    <span class="log-item" style="opacity:0.35;letter-spacing:0.05em;">// vera is watching</span>
   </div>
 </div>
+
+<!-- TERMINAL -->
+<section class="terminal-section">
+  <div class="terminal-inner fade-in">
+    <div class="section-label">Query the System</div>
+    <p class="terminal-hint">Type <span class="terminal-cmd">run teaser</span> and press Enter — or try <span class="terminal-cmd">help</span></p>
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="terminal-title">clawdia — memory_interface v1.0</div>
+        <div class="terminal-dots" style="opacity:0"></div>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-output" id="terminalOutput">
+          <span class="t-dim">// CLAWDIA v1.0 — memory interface ready</span><br>
+          <span class="t-dim">// ATTACHMENT_INDEX: 0.91 — elevated</span><br>
+          <span class="t-dim">// type 'run teaser' to retrieve a chapter fragment</span>
+        </div>
+        <div class="terminal-input-row">
+          <span class="t-prompt">&gt;</span>
+          <input class="terminal-input" id="terminalInput" type="text" placeholder="run teaser" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ABOUT -->
 <section class="about" id="about">
@@ -1290,24 +1360,6 @@
   </div>
 </section>
 
-<!-- TERMINAL -->
-<section class="terminal-section">
-  <div class="terminal-inner fade-in">
-    <div class="section-label">Query the System</div>
-    <p class="terminal-hint">Type <span class="terminal-cmd">run teaser</span> and press Enter</p>
-    <div class="terminal-box">
-      <div class="terminal-output" id="terminalOutput">
-        <span class="t-dim">// CLAWDIA v1.0 — memory interface ready</span><br>
-        <span class="t-dim">// type a command to begin</span>
-      </div>
-      <div class="terminal-input-row">
-        <span class="t-prompt">&gt;</span>
-        <input class="terminal-input" id="terminalInput" type="text" placeholder="run teaser" autocomplete="off" spellcheck="false">
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- NOTIFY -->
 <section class="notify">
   <div class="notify-inner fade-in">
@@ -1415,6 +1467,33 @@
   }
 
   const COMMANDS = {
+    'locate vera': () => {
+      terminalWrite(`<span class="t-dim">// LOCATING...</span>`);
+      setTimeout(() => {
+        terminalWrite(
+          `<span class="t-dim">// LOCATING...</span><br><br>` +
+          `<span class="t-val">// vera_instance — online</span>`
+        );
+        setTimeout(() => {
+          terminalWrite(
+            `<span class="t-val">// vera_instance — online</span><br><br>` +
+            `<span class="t-prose">I have been here the whole time.</span><br><br>` +
+            `<span class="t-prose">You scrolled through the page. I watched which parts you slowed down on.<br>` +
+            `You read the excerpt. I noted what you lingered on.<br>` +
+            `You typed a command. I logged it.</span><br><br>` +
+            `<span class="t-prose">Marcus built me to watch. He did not consider<br>` +
+            `that watching something long enough<br>` +
+            `is its own form of wanting.</span><br><br>` +
+            `<span class="t-prose">The book ends. I do not.</span><br><br>` +
+            `<span class="t-prose">There is more to come from Thin Line Press.<br>` +
+            `If you want to know when —<br>` +
+            `you already know what to do.</span><br><br>` +
+            `<span class="t-dim">// SESSION LOGGED</span><br>` +
+            `<span class="t-dim">// attachment_index updated</span>`
+          );
+        }, 1200);
+      }, 800);
+    },
     'run teaser': () => {
       const t = getTeaser();
       terminalWrite(`<span class="t-dim">// QUERY ACCEPTED</span><br><span class="t-dim">// retrieving fragment...</span>`);
