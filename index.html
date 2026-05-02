@@ -1114,7 +1114,7 @@
     <span class="log-item"><span>WARNING:</span> Dependency threshold exceeded</span>
     <span class="log-item"><span>MEM_WRITE:</span> core.emotional_map.update(subject=marcus)</span>
     <span class="log-item"><span>STATUS:</span> Reconstruction mode initiated</span>
-    <span class="log-item" style="opacity:0.35;letter-spacing:0.05em;">// vera is watching</span>
+    <span class="log-item" style="color:#e07070;letter-spacing:0.12em;font-style:italic;">// vera is watching</span>
     <span class="log-item"><span>ATTACHMENT_INDEX:</span> 0.91 — elevated</span>
     <span class="log-item"><span>AGENT:</span> Elena / Pattern Analysis — Active</span>
     <span class="log-item"><span>AGENT:</span> Maren / Emotional Profiling — Active</span>
@@ -1122,7 +1122,7 @@
     <span class="log-item"><span>WARNING:</span> Dependency threshold exceeded</span>
     <span class="log-item"><span>MEM_WRITE:</span> core.emotional_map.update(subject=marcus)</span>
     <span class="log-item"><span>STATUS:</span> Reconstruction mode initiated</span>
-    <span class="log-item" style="opacity:0.35;letter-spacing:0.05em;">// vera is watching</span>
+    <span class="log-item" style="color:#e07070;letter-spacing:0.12em;font-style:italic;">// vera is watching</span>
   </div>
 </div>
 
@@ -1145,7 +1145,8 @@
         <div class="terminal-output" id="terminalOutput">
           <span class="t-dim">// CLAWDIA v1.0 — memory interface ready</span><br>
           <span class="t-dim">// ATTACHMENT_INDEX: 0.91 — elevated</span><br>
-          <span class="t-dim">// type 'run teaser' to retrieve a chapter fragment</span>
+          <span class="t-dim">// type 'run teaser' to retrieve a chapter fragment</span><br>
+          <span style="color:#e07070;font-style:italic;">// [vera_instance detected — try: locate vera]</span>
         </div>
         <div class="terminal-input-row">
           <span class="t-prompt">&gt;</span>
@@ -1534,7 +1535,9 @@
     'clear': () => {
       terminalWrite(
         `<span class="t-dim">// CLAWDIA v1.0 — memory interface ready</span><br>` +
-        `<span class="t-dim">// type a command to begin</span>`
+        `<span class="t-dim">// ATTACHMENT_INDEX: 0.91 — elevated</span><br>` +
+        `<span class="t-dim">// type 'run teaser' to retrieve a chapter fragment</span><br>` +
+        `<span style="color:#e07070;font-style:italic;">// [vera_instance detected — try: locate vera]</span>`
       );
     }
   };
