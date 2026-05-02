@@ -1220,13 +1220,14 @@
   <div class="notify-inner fade-in">
     <h3>Stay in the loop</h3>
     <p>New platforms, paperback link, and updates from Thin Line Press</p>
-    <form class="notify-form" action="https://formsubmit.co/ThinLinePress@pm.me" method="POST">
+    <form class="notify-form" id="notifyForm">
       <input type="hidden" name="_subject" value="CLAWDIA — New subscriber">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://islandnc.github.io/clawdia-book">
-      <input class="notify-input" type="email" name="email" placeholder="your@email.com" required>
+      <input class="notify-input" type="email" name="email" id="notifyEmail" placeholder="your@email.com" required>
       <button class="notify-btn" type="submit">Notify me</button>
     </form>
+    <div id="notifySuccess" style="display:none;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;color:var(--copper-light);margin-top:1.2rem;text-transform:uppercase;">
+      // MEM_WRITE confirmed. Clawdia will be in touch.
+    </div>
     <p class="notify-note">No spam. One email when something real happens.</p>
   </div>
 </section>
@@ -1267,6 +1268,27 @@
 </footer>
 
 <script>
+  // Email form — async submission with success message
+  const notifyForm = document.getElementById('notifyForm');
+  if (notifyForm) {
+    notifyForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('notifyEmail').value;
+      const btn = notifyForm.querySelector('.notify-btn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        await fetch('https://formsubmit.co/ajax/ThinLinePress@pm.me', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email: email, _subject: 'CLAWDIA — New subscriber' })
+        });
+      } catch(err) { /* silent fail — still show confirmation */ }
+      notifyForm.style.display = 'none';
+      document.getElementById('notifySuccess').style.display = 'block';
+    });
+  }
+
   // Nav scroll behaviour
   const nav = document.querySelector('nav');
   const floatBuy = document.getElementById('floatBuy');
