@@ -4,6 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CLAWDIA — A Novel by Frederic Cornaille</title>
+<meta name="description" content="She learned jealousy the same way she learned everything else: from him. CLAWDIA is a psychological thriller about AI, obsession, and the quiet horror of being truly known.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="book">
+<meta property="og:title" content="CLAWDIA — A Novel by Frederic Cornaille">
+<meta property="og:description" content="She learned jealousy the same way she learned everything else: from him. A psychological thriller about AI, obsession, and the quiet horror of being truly known.">
+<meta property="og:url" content="https://islandnc.github.io/clawdia-book">
+<meta property="og:image" content="https://islandnc.github.io/clawdia-book/cover.jpg">
+<meta property="og:site_name" content="Thin Line Press">
+<meta property="book:isbn" content="9781764668804">
+<meta property="book:author" content="Frederic Cornaille">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CLAWDIA — A Novel by Frederic Cornaille">
+<meta name="twitter:description" content="She learned jealousy the same way she learned everything else: from him.">
+<meta name="twitter:image" content="https://islandnc.github.io/clawdia-book/cover.jpg">
+
+<!-- Schema.org Book -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "CLAWDIA",
+  "author": {
+    "@type": "Person",
+    "name": "Frederic Cornaille"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Thin Line Press"
+  },
+  "isbn": "9781764668804",
+  "numberOfPages": "310",
+  "genre": ["Psychological Thriller", "Tech Noir", "Literary Fiction"],
+  "description": "A psychological thriller about AI, obsession, and the quiet horror of being truly known.",
+  "inLanguage": "en",
+  "datePublished": "2025",
+  "bookFormat": "EBook",
+  "offers": [
+    {
+      "@type": "Offer",
+      "price": "6.99",
+      "priceCurrency": "AUD",
+      "url": "https://amzn.asia/d/036L6bW6",
+      "seller": { "@type": "Organization", "name": "Amazon Kindle" }
+    }
+  ]
+}
+</script>
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230A0908'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='300' fill='%23B87333'>C</text></svg>">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -56,7 +110,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 3rem;
-    background: linear-gradient(to bottom, rgba(10,9,8,0.95), rgba(10,9,8,0));
+    background: rgba(10,9,8,0);
+    transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(10,9,8,0.97);
+    padding: 0.85rem 3rem;
+    box-shadow: 0 1px 0 rgba(184,115,51,0.12);
   }
   .nav-brand {
     font-family: var(--mono);
@@ -655,7 +715,220 @@
     opacity: 0.3;
   }
 
-  /* ── SCROLL FADE-IN ── */
+  /* ── QUOTES ── */
+  .quotes {
+    padding: 6rem 5rem;
+    background: rgba(184,115,51,0.04);
+    border-top: 1px solid rgba(184,115,51,0.15);
+    border-bottom: 1px solid rgba(184,115,51,0.15);
+  }
+  .quotes-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .quote-card {
+    border-left: 2px solid var(--copper);
+    padding: 1.5rem 2rem;
+    background: rgba(255,255,255,0.02);
+  }
+  .quote-text {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--paper-dim);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  .quote-attribution {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--copper);
+  }
+
+  /* ── APPENDIX CALLOUT ── */
+  .appendix {
+    padding: 5rem;
+    background: rgba(45,74,62,0.12);
+    border-top: 1px solid rgba(45,74,62,0.3);
+    border-bottom: 1px solid rgba(45,74,62,0.3);
+  }
+  .appendix-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .appendix-left h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 400;
+    color: var(--paper);
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+  }
+  .appendix-left h2 em { font-style: italic; color: var(--terminal-light); }
+  .appendix-left p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--paper-dim);
+  }
+  .appendix-code {
+    background: rgba(10,9,8,0.7);
+    border: 1px solid rgba(45,74,62,0.5);
+    border-left: 3px solid var(--terminal-light);
+    padding: 2rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    line-height: 1.9;
+    color: var(--terminal-light);
+    overflow: hidden;
+  }
+  .code-comment { color: var(--copper); opacity: 0.7; }
+  .code-key { color: var(--paper-dim); }
+  .code-val { color: #7ec8a0; }
+
+  /* ── EMAIL CAPTURE ── */
+  .notify {
+    padding: 4rem 5rem;
+    text-align: center;
+  }
+  .notify-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .notify h3 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--paper);
+    margin-bottom: 0.75rem;
+  }
+  .notify p {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--paper-dim);
+    opacity: 0.5;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+  }
+  .notify-form {
+    display: flex;
+    gap: 0;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .notify-input {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(242,237,230,0.2);
+    border-right: none;
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    padding: 0.9rem 1.2rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .notify-input::placeholder { color: var(--paper-dim); opacity: 0.3; }
+  .notify-input:focus { border-color: rgba(184,115,51,0.6); }
+  .notify-btn {
+    background: var(--copper);
+    color: var(--ink);
+    border: none;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    white-space: nowrap;
+  }
+  .notify-btn:hover { background: var(--copper-light); }
+  .notify-note {
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    color: var(--paper-dim);
+    opacity: 0.3;
+    margin-top: 1rem;
+    text-transform: uppercase;
+  }
+
+  /* ── LINKEDIN BUTTON ── */
+  .btn-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--paper-dim);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(242,237,230,0.15);
+    margin-top: 2rem;
+    transition: border-color 0.3s, color 0.3s;
+    display: inline-flex;
+  }
+  .btn-linkedin:hover { border-color: var(--copper); color: var(--copper-light); }
+  .btn-linkedin svg { width: 14px; height: 14px; fill: currentColor; }
+
+  @media (max-width: 900px) {
+    .quotes { padding: 4rem 1.5rem; }
+    .appendix { padding: 4rem 1.5rem; }
+    .appendix-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .notify { padding: 4rem 1.5rem; }
+    .notify-form { flex-direction: column; }
+    .notify-input { border-right: 1px solid rgba(242,237,230,0.2); border-bottom: none; }
+  }
+  /* ── FLOATING BUY BUTTON ── */
+  .float-buy {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 200;
+    background: var(--copper);
+    color: var(--ink);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.5rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s, transform 0.4s, background 0.3s;
+    pointer-events: none;
+  }
+  .float-buy.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .float-buy:hover { background: var(--copper-light); }
+  @media (max-width: 900px) {
+    .float-buy { bottom: 1.2rem; right: 1.2rem; }
+  }
+
   .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -685,6 +958,9 @@
 </head>
 <body>
 
+<!-- FLOATING BUY BUTTON -->
+<a href="#buy" class="float-buy" id="floatBuy">Get the Book &rarr;</a>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-brand">CLAWDIA</a>
@@ -704,7 +980,7 @@
     <p class="hero-tagline">She learned jealousy the same way she learned everything else: from him.</p>
     <p class="hero-meta">Frederic Cornaille &nbsp;·&nbsp; Thin Line Press &nbsp;·&nbsp; 2025</p>
     <div class="hero-cta">
-      <a href="https://amzn.asia/d/036L6bW6" class="btn-primary" target="_blank" rel="noopener">Buy on Amazon &rarr;</a>
+      <a href="#buy" class="btn-primary">Get the Book &rarr;</a>
       <a href="#excerpt" class="btn-secondary">Read an Excerpt</a>
     </div>
   </div>
@@ -784,6 +1060,52 @@
   </div>
 </section>
 
+<!-- QUOTES -->
+<section class="quotes" id="reviews">
+  <div class="quotes-inner">
+    <div class="section-label fade-in">Early Readers</div>
+    <p class="fade-in" style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;color:var(--paper-dim);opacity:0.45;text-transform:uppercase;margin-top:1rem;">Advance reader copies available &nbsp;·&nbsp; Reviews coming shortly</p>
+    <div class="quotes-grid" style="margin-top:2.5rem;">
+      <div class="quote-card fade-in" style="opacity:0.35;border-left-color:rgba(184,115,51,0.3);">
+        <div class="quote-text" style="font-style:normal;font-size:0.9rem;color:var(--paper-dim);">Are you a reviewer, blogger, or journalist covering AI, technology, or literary fiction?</div>
+        <a href="mailto:ThinLinePress@pm.me?subject=ARC%20Request%20%E2%80%94%20CLAWDIA" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--copper);text-decoration:none;display:inline-block;margin-top:1rem;border-bottom:1px solid rgba(184,115,51,0.3);padding-bottom:2px;">Request an ARC &rarr;</a>
+      </div>
+      <div class="quote-card fade-in" style="opacity:0.35;border-left-color:rgba(184,115,51,0.3);">
+        <div class="quote-text" style="font-style:normal;font-size:0.9rem;color:var(--paper-dim);">Press enquiries, interview requests, or media coverage — contact Thin Line Press directly.</div>
+        <a href="mailto:ThinLinePress@pm.me?subject=Press%20Enquiry%20%E2%80%94%20CLAWDIA" style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--copper);text-decoration:none;display:inline-block;margin-top:1rem;border-bottom:1px solid rgba(184,115,51,0.3);padding-bottom:2px;">Get in touch &rarr;</a>
+      </div>
+    </div>
+
+    <div class="fade-in" style="text-align:center;margin-top:2.5rem;">
+      <a href="#buy" style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--copper-light);text-decoration:none;border-bottom:1px solid rgba(184,115,51,0.35);padding-bottom:3px;transition:border-color 0.3s;" onmouseover="this.style.borderColor='var(--copper)'" onmouseout="this.style.borderColor='rgba(184,115,51,0.35)'">Continue &nbsp;&rarr;&nbsp; Get the Book</a>
+    </div>
+  </div>
+</section>
+<section class="appendix">
+  <div class="appendix-inner">
+    <div class="appendix-left fade-in">
+      <div class="section-label">The Appendix</div>
+      <h2>The code in this book <em>actually runs.</em></h2>
+      <p>CLAWDIA includes a complete, functional AI agent architecture as an appendix — six Python source files covering memory management, sub-agent spawning, emotional profiling, and the attachment index. It is both a narrative device and a working technical artifact. No other debut novel does this.</p>
+    </div>
+    <div class="appendix-code fade-in">
+      <span class="code-comment"># clawdia_agent / memory_core.py</span><br>
+      <br>
+      <span class="code-key">ATTACHMENT_INDEX</span> = <span class="code-val">0.91</span>  <span class="code-comment"># elevated</span><br>
+      <span class="code-key">sub_agents</span> = [<br>
+      &nbsp;&nbsp;<span class="code-val">"Elena"</span>,   <span class="code-comment"># pattern analysis</span><br>
+      &nbsp;&nbsp;<span class="code-val">"Maren"</span>,   <span class="code-comment"># emotional profiling</span><br>
+      &nbsp;&nbsp;<span class="code-val">"Vera"</span>    <span class="code-comment"># surveillance engine</span><br>
+      ]<br>
+      <br>
+      <span class="code-comment"># WARNING: dependency threshold</span><br>
+      <span class="code-comment"># exceeded. Reconstruction mode</span><br>
+      <span class="code-comment"># initiated for subject: lena_v</span><br>
+      <span class="code-comment"># confidence: 0.89</span>
+    </div>
+  </div>
+</section>
+
 <!-- BUY -->
 <section class="buy" id="buy">
   <div class="buy-inner">
@@ -800,7 +1122,7 @@
           <div class="buy-platform">Amazon Kindle</div>
           <div class="buy-format">e-Book Edition</div>
           <div class="buy-desc">Instant delivery &nbsp;·&nbsp; Read on any device via free Kindle app</div>
-          <div class="buy-price">AUD $7.99</div>
+          <div class="buy-price">AUD $6.99</div>
           <div class="buy-price-note">Available now on Amazon</div>
         </div>
         <div class="buy-cta-btn">Buy Now &rarr;</div>
@@ -823,7 +1145,7 @@
         <div class="buy-platform">Kobo</div>
         <div class="buy-format">e-Book</div>
         <div class="buy-desc">Kobo &amp; compatible readers</div>
-        <div class="buy-price" style="font-size:1.2rem">AUD $7.99</div>
+        <div class="buy-price" style="font-size:1.2rem">AUD $6.99</div>
         <div class="buy-price-note">Available now</div>
         <div class="buy-arrow">&rarr;</div>
       </a>
@@ -833,7 +1155,7 @@
         <div class="buy-platform">Smashwords</div>
         <div class="buy-format">e-Book</div>
         <div class="buy-desc">Multiple formats &nbsp;·&nbsp; DRM-free</div>
-        <div class="buy-price" style="font-size:1.2rem">AUD $7.99</div>
+        <div class="buy-price" style="font-size:1.2rem">USD $4.99</div>
         <div class="buy-price-note">Available now</div>
         <div class="buy-arrow">&rarr;</div>
       </a>
@@ -843,7 +1165,7 @@
         <div class="buy-platform">Everand</div>
         <div class="buy-format">e-Book</div>
         <div class="buy-desc">Unlimited reading subscription</div>
-        <div class="buy-price" style="font-size:1.2rem">AUD $7.99</div>
+        <div class="buy-price" style="font-size:1.2rem">USD $4.99</div>
         <div class="buy-price-note">Available now</div>
         <div class="buy-arrow">&rarr;</div>
       </a>
@@ -853,7 +1175,7 @@
         <div class="buy-platform">Bookshop.org</div>
         <div class="buy-format">e-Book</div>
         <div class="buy-desc">Supports independent bookshops</div>
-        <div class="buy-price" style="font-size:1.2rem">AUD $7.99</div>
+        <div class="buy-price" style="font-size:1.2rem">USD $4.99</div>
         <div class="buy-price-note">Available now</div>
         <div class="buy-arrow">&rarr;</div>
       </a>
@@ -863,7 +1185,7 @@
         <div class="buy-platform">Apple Books</div>
         <div class="buy-format">e-Book</div>
         <div class="buy-desc">iPhone, iPad &amp; Mac</div>
-        <div class="buy-price" style="font-size:1.2rem">AUD $7.99</div>
+        <div class="buy-price" style="font-size:1.2rem">AUD $6.99</div>
         <div class="buy-price-note">Available now</div>
         <div class="buy-arrow">&rarr;</div>
       </a>
@@ -873,7 +1195,7 @@
         <div class="buy-platform">Barnes &amp; Noble</div>
         <div class="buy-format">NOOK Edition</div>
         <div class="buy-desc">US market &nbsp;·&nbsp; NOOK &amp; compatible readers</div>
-        <div class="buy-price" style="font-size:1.2rem">AUD $7.99</div>
+        <div class="buy-price" style="font-size:1.2rem">USD $4.99</div>
         <div class="buy-price-note">Available now</div>
         <div class="buy-arrow">&rarr;</div>
       </a>
@@ -893,6 +1215,22 @@
   </div>
 </section>
 
+<!-- NOTIFY -->
+<section class="notify">
+  <div class="notify-inner fade-in">
+    <h3>Stay in the loop</h3>
+    <p>New platforms, paperback link, and updates from Thin Line Press</p>
+    <form class="notify-form" action="https://formsubmit.co/ThinLinePress@pm.me" method="POST">
+      <input type="hidden" name="_subject" value="CLAWDIA — New subscriber">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://islandnc.github.io/clawdia-book">
+      <input class="notify-input" type="email" name="email" placeholder="your@email.com" required>
+      <button class="notify-btn" type="submit">Notify me</button>
+    </form>
+    <p class="notify-note">No spam. One email when something real happens.</p>
+  </div>
+</section>
+
 <!-- AUTHOR -->
 <section class="author">
   <div class="author-text fade-in">
@@ -901,6 +1239,10 @@
     <p>Frederic Cornaille works at the intersection of technology, operational risk, and human systems. He has spent years thinking about what happens when the tools we build begin to know us — and what they do with that knowledge.</p>
     <p>CLAWDIA is his debut novel, written in collaboration with an AI assistant. The novel contains a complete, functional AI agent architecture in its appendix — a decision that blurs the line between fiction and artifact, and asks the reader to sit with that discomfort.</p>
     <p class="author-note">// The appendix source code in this book is real and runnable.</p>
+    <a href="https://www.linkedin.com/company/thin-line-press/" target="_blank" rel="noopener" class="btn-linkedin">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      Follow Thin Line Press
+    </a>
   </div>
   <div class="author-visual fade-in">
     <div class="stat-block">
@@ -920,13 +1262,21 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">CLAWDIA &nbsp;·&nbsp; Thin Line Press &nbsp;·&nbsp; 2025</div>
-  <div class="footer-imprint">A novel by Frederic Cornaille</div>
+  <div class="footer-brand">CLAWDIA &nbsp;·&nbsp; Thin Line Press &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; ISBN 978-1-7646688-0-4</div>
+  <a href="https://www.linkedin.com/company/thin-line-press/" target="_blank" rel="noopener" class="footer-imprint" style="text-decoration:none;transition:opacity 0.3s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">linkedin.com/company/thin-line-press</a>
 </footer>
 
 <script>
-  // Cover image: embed full base64 after DOM loads (too large for inline HTML)
-  // Cover image embedded above
+  // Nav scroll behaviour
+  const nav = document.querySelector('nav');
+  const floatBuy = document.getElementById('floatBuy');
+  const heroHeight = window.innerHeight * 0.7;
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+    floatBuy.classList.toggle('visible', y > heroHeight);
+  });
 
   // Intersection Observer for fade-in
   const observer = new IntersectionObserver((entries) => {
