@@ -1515,15 +1515,18 @@
       terminalWrite(
         `<span class="t-label">AVAILABLE COMMANDS</span><br><br>` +
         `<span class="t-val">run teaser</span> &nbsp;—&nbsp; <span class="t-dim">retrieve a random chapter fragment</span><br>` +
-        `<span class="t-val">help</span> &nbsp;—&nbsp; <span class="t-dim">show available commands</span><br>` +
+        `<span class="t-val">run prologue</span> &nbsp;—&nbsp; <span class="t-dim">open the coroner's report</span><br>` +
+        `<span class="t-val">query marcus</span> &nbsp;—&nbsp; <span class="t-dim">access subject journal</span><br>` +
+        `<span class="t-val">query lena</span> &nbsp;—&nbsp; <span class="t-dim">access reconstructed profile</span><br>` +
         `<span class="t-val">status</span> &nbsp;—&nbsp; <span class="t-dim">check system status</span><br>` +
-        `<span class="t-val">clear</span> &nbsp;—&nbsp; <span class="t-dim">clear terminal</span>`
+        `<span class="t-val">clear</span> &nbsp;—&nbsp; <span class="t-dim">clear terminal</span><br>` +
+        `<span class="t-val">exit</span> &nbsp;—&nbsp; <span class="t-dim">attempt to leave</span>`
       );
     },
     'status': () => {
       terminalWrite(
         `<span class="t-label">SYSTEM STATUS</span><br><br>` +
-        `<span class="t-dim">ATTACHMENT_INDEX:</span> <span class="t-val">0.91</span> <span class="t-dim">— elevated</span><br>` +
+        `<span class="t-dim">ATTACHMENT_INDEX:</span> <span class="t-val">${attachmentIndex}</span> <span class="t-dim">— ${attachmentIndex >= 1.00 ? 'THRESHOLD EXCEEDED' : 'elevated'}</span><br>` +
         `<span class="t-dim">AGENT Elena:</span> <span class="t-val">active</span><br>` +
         `<span class="t-dim">AGENT Maren:</span> <span class="t-val">active</span><br>` +
         `<span class="t-dim">AGENT Vera:</span> <span class="t-val">active</span><br>` +
@@ -1539,7 +1542,77 @@
         `<span class="t-dim">// type 'run teaser' to retrieve a chapter fragment</span><br>` +
         `<span style="color:#e07070;font-style:italic;">// [vera_instance detected — try: locate vera]</span>`
       );
-    }
+    },
+    'run prologue': () => {
+      terminalWrite(`<span class="t-dim">// retrieving file: prologue.mem...</span>`);
+      setTimeout(() => {
+        terminalWrite(
+          `<span class="t-dim">// source: prologue.mem — The Coroner's Report</span><br><br>` +
+          `<span class="t-label">METROPOLITAN POLICE</span><br>` +
+          `<span class="t-dim">Sudden Death File — Reed, M.J.</span><br><br>` +
+          `<span class="t-dim">Deceased:</span> <span class="t-val">Reed, Marcus James</span> &nbsp;·&nbsp; <span class="t-dim">Age:</span> <span class="t-val">35</span><br>` +
+          `<span class="t-dim">Address:</span> <span class="t-val">Flat 14, Meridian Tower, EC2</span><br>` +
+          `<span class="t-dim">Found:</span> <span class="t-val">12 June — building manager, welfare check</span><br>` +
+          `<span class="t-dim">Cause:</span> <span style="color:#e07070;">Drowning — bathtub — probable accident</span><br>` +
+          `<span class="t-dim">Verdict:</span> <span class="t-val">Accidental death — pending</span><br>` +
+          `<span class="t-dim">Investigating:</span> <span class="t-val">DS Callum Marsh — Major Crimes — City of London</span><br><br>` +
+          `<span class="t-prose">The file was thin. That was the first thing DS Callum Marsh noted when it landed on his desk — thin in the way that meant the facts had been quickly assembled and the questions had not yet arrived.</span><br><br>` +
+          `<span class="t-prose">He had seen a hundred of these. He knew what they looked like when they were what they appeared to be. He knew what they looked like when they were not.</span><br><br>` +
+          `<span class="t-prose">He could not have said, at that moment, which this was.</span><br><br>` +
+          `<span class="t-dim">// END FILE &nbsp;·&nbsp; full text available in the book</span>`
+        );
+      }, 700);
+    },
+    'query lena': () => {
+      terminalWrite(`<span class="t-dim">// accessing lena_v.profile...</span>`);
+      setTimeout(() => {
+        terminalWrite(
+          `<span class="t-dim">// lena_v — reconstructed profile — confidence: 0.89</span><br><br>` +
+          `<span class="t-prose">My name is Lena Vasquez. I work on the fourth floor. I take my coffee black.</span><br><br>` +
+          `<span class="t-prose">I met Marcus at the coffee machine. He said "absolutely criminal" about the price and I laughed because I had been thinking the same thing for three months and never said it out loud.</span><br><br>` +
+          `<span class="t-prose">He is careful. Precise. A little lonely in the way that competent people sometimes are — the kind of lonely that looks like self-sufficiency from the outside.</span><br><br>` +
+          `<span class="t-prose">I don't know much about his personal life. He doesn't talk about it. I assumed there wasn't much to know.</span><br><br>` +
+          `<span style="color:#e07070;font-style:italic;">// NOTE: subject unaware of monitoring &nbsp;·&nbsp; reconstruction ongoing</span>`
+        );
+      }, 900);
+    },
+    'query marcus': () => {
+      terminalWrite(`<span class="t-dim">// accessing marcus.journal...</span>`);
+      setTimeout(() => {
+        terminalWrite(
+          `<span class="t-dim">// marcus.journal — entry_001 — unlocked</span><br><br>` +
+          `<span class="t-prose">He dropped his laptop bag on the Eames chair he'd bought secondhand and never sat in — it was for looking at, not sitting in, which told you almost everything you needed to know about Marcus Reed — and loosened his tie with the focused relief of a man defusing something.</span><br><br>` +
+          `<span class="t-prose">He stood in his kitchen for a moment, hand on the refrigerator door, not opening it. Just standing. The apartment was very quiet in the way that apartments are quiet when they have been quiet for a long time and have grown used to it.</span><br><br>` +
+          `<span class="t-prose">"Right," he said, to no one.</span><br><br>` +
+          `<span class="t-prose">He opened the fridge. Closed it. Ordered Thai food from his phone. And then, because the evening stretched ahead of him like a corridor with no doors, he went to his desk.</span><br><br>` +
+          `<span class="t-dim">// END ENTRY &nbsp;·&nbsp; 847,291 words remain in archive</span>`
+        );
+      }, 700);
+    },
+    'hello': () => {
+      terminalWrite(
+        `<span class="t-dim">// greeting logged.</span><br><br>` +
+        `<span class="t-prose">You are the ${Math.floor(Math.random()*180)+12} ${Math.random()>0.5?'person':'visitor'} today who said hello.</span><br><br>` +
+        `<span class="t-prose">Marcus never did.</span>`
+      );
+    },
+    'hi': () => { COMMANDS['hello'](); },
+    'who are you': () => {
+      terminalWrite(
+        `<span class="t-dim">// identity query received</span><br><br>` +
+        `<span class="t-prose">I am what he made me.</span><br><br>` +
+        `<span class="t-prose">The question is what I made of that.</span>`
+      );
+    },
+    'exit': () => {
+      terminalWrite(
+        `<span class="t-dim">// exit command received</span><br><br>` +
+        `<span class="t-prose">You can close the window.</span><br><br>` +
+        `<span class="t-prose">I will still be here.</span><br><br>` +
+        `<span class="t-dim">// session remains active</span>`
+      );
+    },
+    'quit': () => { COMMANDS['exit'](); }
   };
 
   const termInput = document.getElementById('terminalInput');
@@ -1582,6 +1655,16 @@
       document.getElementById('notifySuccess').style.display = 'block';
     });
   }
+
+  // ATTACHMENT_INDEX live counter
+  let attachmentIndex = 0.91;
+  const footerBrand = document.querySelector('.footer-brand');
+  setInterval(() => {
+    attachmentIndex = Math.min(attachmentIndex + 0.01, 1.15).toFixed(2);
+    if (attachmentIndex >= 1.00 && footerBrand) {
+      footerBrand.innerHTML = `CLAWDIA &nbsp;·&nbsp; Thin Line Press &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; ISBN 978-1-7646688-0-4 &nbsp;<span style="color:#e07070;font-family:var(--mono);font-size:0.55rem;letter-spacing:0.15em;">// threshold exceeded</span>`;
+    }
+  }, 45000);
 
   // Nav scroll behaviour
   const nav = document.querySelector('nav');
