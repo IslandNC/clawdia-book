@@ -238,3 +238,5 @@ nav{padding-top:calc(.9rem + env(safe-area-inset-top,0px))}
 body.has-banner nav{top:0}
 body.has-banner .hero-left{padding-top:calc(6.2rem + env(safe-area-inset-top,0px))}
 }
+/* v5 contrast: terminal text readable (AA) */
+.log-item,.excerpt-log,.appendix-code{color:#86c4ab}
