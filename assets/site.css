@@ -223,3 +223,18 @@ footer{padding:2rem 1.5rem;flex-direction:column;text-align:center}
 .nav-press{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);text-decoration:none;padding:.45rem .8rem;border:1px solid rgba(255,255,255,.22);transition:border-color .3s,color .3s}
 .nav-press:hover,.nav-press:focus-visible{border-color:var(--copper);color:var(--copper-light)}
 @media(max-width:560px){.nav-brand{display:none}.nav-press{font-size:.62rem;padding:.4rem .6rem}}
+/* v4: mobile / iOS Safari hardening */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media(max-width:700px){
+h1{font-size:clamp(4.4rem,23vw,6rem);line-height:.98;letter-spacing:-.01em;padding-bottom:.06em;overflow-wrap:break-word}
+.hero{min-height:auto}
+.hero-left{padding-top:calc(6.2rem + env(safe-area-inset-top,0px))}
+body.has-banner .hero-left{padding-top:calc(8.6rem + env(safe-area-inset-top,0px))}
+nav{padding-top:calc(.9rem + env(safe-area-inset-top,0px))}
+.hero-lede,.hero-tag{font-size:1.05rem}
+}
+@media(max-width:700px){
+.lang-banner{top:auto;bottom:0;padding-bottom:calc(.6rem + env(safe-area-inset-bottom,0px));box-shadow:0 -6px 24px rgba(0,0,0,.4)}
+body.has-banner nav{top:0}
+body.has-banner .hero-left{padding-top:calc(6.2rem + env(safe-area-inset-top,0px))}
+}
