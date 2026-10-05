@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+.AppleDouble
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Secrets and local config
+.env
+.env.*
+*.pem
+*.key
+
+# Logs and temp files
+*.log
+*.tmp
+node_modules/
+__pycache__/
