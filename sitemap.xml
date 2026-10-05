@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://islandnc.github.io/clawdia-book/</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://clawdia.thinlinepress.com.au/</loc><lastmod>2026-10-05</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://clawdia.thinlinepress.com.au/"/><xhtml:link rel="alternate" hreflang="fr" href="https://clawdia.thinlinepress.com.au/fr/"/></url>
+  <url><loc>https://clawdia.thinlinepress.com.au/fr/</loc><lastmod>2026-10-05</lastmod><xhtml:link rel="alternate" hreflang="en" href="https://clawdia.thinlinepress.com.au/"/><xhtml:link rel="alternate" hreflang="fr" href="https://clawdia.thinlinepress.com.au/fr/"/></url>
 </urlset>

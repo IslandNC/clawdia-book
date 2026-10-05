@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://islandnc.github.io/clawdia-book/sitemap.xml
+Sitemap: https://clawdia.thinlinepress.com.au/sitemap.xml
